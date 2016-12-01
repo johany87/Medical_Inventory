@@ -28,7 +28,7 @@
           </ul>
         </div>
         <!--LABORATORIES-->
-        <div class="dropdown col-md-3">
+        <div class="dropdown col-md-4">
           <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             Laboratories
             <span class="caret"></span>
@@ -49,9 +49,8 @@
             <li><a href="<%= stocks_path %>">All Stocks</a></li>
           </ul>
         </div>
-        <div class="cotainer col-md-3">
-          <li class="btn btn-default"><a href="<%= destroy_user_session_path %>" data-method="delete">Log out</a></li>
-        </div>
+        <a class="btn btn-default" href="<%= filters_path %>">Filters</a>
+        <a class="btn btn-primary" href="<%= destroy_user_session_path %>" data-method="delete">Log out</a>
         <% end %>
       </ul>
     </div>
