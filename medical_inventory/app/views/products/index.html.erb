@@ -3,7 +3,7 @@
   <% @products.each do |pr| %>
     <article class="row product">
         <ul class="list-unstyled">
-          <li class="col-md-1"><img src="<%= pr.avatar %>" alt="product"></li>
+          <li class="col-md-1 product-img"><img src="<%= pr.avatar %>" alt="product"></li>
           <li class="col-md-1"><strong>Nombre</strong></li>
           <li class="col-md-1"><%= pr.name %></li>
           <li class="col-md-1"><strong>Precio</strong></li>

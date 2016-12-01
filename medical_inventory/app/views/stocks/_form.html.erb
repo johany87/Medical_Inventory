@@ -1,0 +1,51 @@
+<% form_name ||= "Manage" %>
+<h1 class="text-center"> <%= form_name %> stock </h1>
+
+  <% if @stock.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@stock.errors.count, "error") %> prohibited
+      this article from being saved:
+    </h2>
+    <ul>
+      <% @stock.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+<div class="container">
+  <%= form_for @stock do |s| %>
+    <!--Product-->
+    <div class="form-group">
+      <%= s.label :producto %>
+      <select name="stock[product_id]" class="selectpicker">
+        <%= @products.each do |pr|  %>
+            <option value="<%= pr.id %>"> <%= pr.name %> </option>
+        <% end  %>
+      </select>
+    </div>
+    <!--Quantity-->
+    <div class="form-group">
+      <%= s.label :quantity %>
+      <%= s.number_field :quantity, class: "form-control" %>
+    </div>
+    <!--User-->
+    <div class="form-group">
+      <%= s.label :user %>
+      <select name="stock[user_id]" class="selectpicker">
+        <%= @users.each do |u|  %>
+            <option value="<%= u.id %>"> <%= u.email %> </option>
+        <% end  %>
+      </select>
+    </div>
+    <!--Due Date-->
+    <div class="form-group">
+      <%= s.label :due_date %>
+      <%= s.date_field :due_date, class: "form-control" %>
+    </div>
+    <%= s.submit "#{form_name} stock", class:"btn btn-primary" %>
+
+  <% end %>
+</div>

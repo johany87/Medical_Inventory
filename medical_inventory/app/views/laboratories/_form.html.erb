@@ -1,0 +1,28 @@
+<div class="container">
+  <%= form_name ||= "Manage" %>
+  <h1 class="text-center"> <%= form_name %> laboratory </h1>
+
+  <% if @laboratory.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@laboratory.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @laboratory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+
+<div class="container">
+  <%= form_for @laboratory do |l| %>
+    <div class="form-group">
+      <%= l.label :name %>
+      <%= l.text_field :name, class: "form-control" %>
+    </div>
+    <%= l.submit "#{form_name} laboratory", class:"btn btn-primary" %>
+  <% end %>
+</div>
