@@ -1,6 +1,44 @@
 <div class="container">
-  <h1 class="text-center">Welcome to the Medical Inventory</h1>
-  <div class="row">
+  <% if current_user %>
+    <h1 class="text-center">Welcome</h1>
+  <% else %>
+    <h1 class="text-center">Please Log In</h1>
+  <% end %>
+</div>
 
-  </div>
+<!--PRODUCTS OVERDUES-->
+<div class="container">
+  <% @overdue_stocks.each do |os| %>
+    <article class="row laboratory">
+      <ul class="list-unstyled">
+        <li class="col-md-1"><strong>Product</strong></li>
+        <li class="col-md-1"><%= os.product.name %></li>
+        <li class="col-md-1"><strong>User</strong></li>
+        <li class="col-md-2"><%= os.user.email %></li>
+        <li class="col-md-1"><strong>Quantity</strong></li>
+        <li class="col-md-1"><%= os.quantity %></li>
+        <li class="col-md-1"><strong>Due Date</strong></li>
+        <li class="col-md-1"><%= os.due_date %></li>
+        <li class="col-md-1"><a href="<%= stock_path(os.id) %>  " data-method="delete" class="btn btn-danger"> Delete </a></li>
+        <li class="col-md-1"> <a href="<%= edit_stock_path(os.id)%>" class="btn btn-success"> Edit</a> </li>
+        <li class="col-md-1"> <a href="<%= stock_path(os.id)%>" class="btn btn-info">View</a></li>
+      </ul>
+    </article>
+  <% end if @overdue_stocks.any?%>
+</div>
+
+<!--PRODUCTS BY USER-->
+<div class="container">
+  <li class="col-md-1"><strong>Products by user</strong></li>
+  <%= form_for @products_by_user do |pr| %>
+  <div class="form-group">
+    <li class="col-md-1"><strong>Product</strong></li>
+    <li class="col-md-1"><%= pr.product.name %></li>
+    <li class="col-md-1"><strong>User</strong></li>
+    <li class="col-md-2"><%= pr.user.email %></li>
+    <li class="col-md-1"><strong>Quantity</strong></li>
+    <li class="col-md-1"><%= pr.quantity %></li>
+    <li class="col-md-1"><strong>Due Date</strong></li>
+    <li class="col-md-1"><%= pr.due_date %></li>
+  <% end %>
 </div>

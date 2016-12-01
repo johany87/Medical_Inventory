@@ -9,7 +9,7 @@
           <li class="col-md-1"><strong>Precio</strong></li>
           <li class="col-md-1"><%= pr.price %></li>
           <li class="col-md-1"><strong>Laboratory</strong></li>
-          <li class="col-md-1"><%= pr.laboratory_id %></li>
+          <li class="col-md-1"><%= pr.laboratory.name %></li>
           <li class="col-md-1"><a href="<%= product_path(pr.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
           <li class="col-md-1"> <a href="<%= edit_product_path(pr.id)%>" class="btn btn-success"> Edit</a> </li>
           <li class="col-md-1"> <a href="<%= product_path(pr.id)%>" class="btn btn-info">View</a></li>

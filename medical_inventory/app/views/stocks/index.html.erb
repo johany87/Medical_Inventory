@@ -1,5 +1,7 @@
 <div class="container">
   <h1 class="text-center"> Stocks </h1>
+  <a class="btn btn-default center-block" href="<%= new_stock_path %>">New Stock</a>
+  <br>
   <% @stocks.each do |s| %>
     <article class="row stock">
         <ul class="list-unstyled">
@@ -10,7 +12,7 @@
           <li class="col-md-1"><strong>Quantity</strong></li>
           <li class="col-md-1"><%= s.quantity %></li>
           <li class="col-md-1"><strong>Due Date</strong></li>
-          <li class="col-md-2"><%= s.due_date %></li>
+          <li class="col-md-1"><%= s.due_date %></li>
           <li class="col-md-1"><a href="<%= stock_path(s.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
           <li class="col-md-1"> <a href="<%= edit_stock_path(s.id)%>" class="btn btn-success"> Edit</a> </li>
           <li class="col-md-1"> <a href="<%= stock_path(s.id)%>" class="btn btn-info">View</a></li>

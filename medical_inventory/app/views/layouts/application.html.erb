@@ -1,29 +1,61 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MedicalInventory</title>
-    <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>MedicalInventory</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <nav class="navbar navbar-default">
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <a class="navbar-brand" href="<%= root_path %>">Medical Inventory <%= current_user ? "| #{current_user.email}" : '' %></a>
-        <ul class="nav navbar-nav navbar-right">
-          <% if !current_user %>
-              <li><a href="<%= new_user_session_path %>">Log in</a></li>
-              <li><a href="<%= new_user_registration_path %>">Sign up</a></li>
-          <% else %>
-              <li><a href="<%= new_product_path %>">New Product</a></li>
-              <li><a href="<%= new_laboratory_path %>">New Laboratory</a></li>
-              <li><a href="<%= new_stock_path %>">New Stock</a></li>
-              <li><a href="<%= destroy_user_session_path %>" data-method="delete">Log out</a></li>
-          <% end %>
-        </ul>
-       </div>
-    </nav>
-    <%= yield %>
-  </body>
+<body>
+  <nav class="navbar navbar-default col-md-12">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <a class="navbar-brand" href="<%= root_path %>">Medical Inventory <%= current_user ? "| #{current_user.email}" : '' %></a>
+      <ul class="nav navbar-nav navbar-right">
+        <% if !current_user %>
+        <li><a href="<%= new_user_session_path %>">Log in</a></li>
+        <li><a href="<%= new_user_registration_path %>">Sign up</a></li>
+        <% else %>
+        <!--PRODUCTS-->
+        <div class="dropdown col-md-3">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Products
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="<%= new_product_path %>">New Product</a></li>
+            <li><a href="<%= products_path %>">All Product</a></li>
+          </ul>
+        </div>
+        <!--LABORATORIES-->
+        <div class="dropdown col-md-3">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Laboratories
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="<%= new_laboratory_path %>">New Laboratory</a></li>
+            <li><a href="<%= laboratories_path %>">All Laboratory</a></li>
+          </ul>
+        </div>
+        <!--STOCKS-->
+        <div class="dropdown col-md-3">
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Stocks
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="<%= new_stock_path %>">New Stock</a></li>
+            <li><a href="<%= stocks_path %>">All Stocks</a></li>
+          </ul>
+        </div>
+        <div class="cotainer col-md-3">
+          <li class="btn btn-default"><a href="<%= destroy_user_session_path %>" data-method="delete">Log out</a></li>
+        </div>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+  <%= yield %>
+</body>
 </html>
