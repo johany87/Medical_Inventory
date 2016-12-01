@@ -1,2 +1,19 @@
-<h1>Products#index</h1>
-<p>Find me in app/views/products/index.html.erb</p>
+<div class="container">
+  <h1 class="text-center"> Products </h1>
+  <% @products.each do |pr| %>
+    <article class="row product">
+        <ul class="list-unstyled">
+          <li class="col-md-1"><img src="<%= pr.avatar %>" alt="product"></li>
+          <li class="col-md-1"><strong>Nombre</strong></li>
+          <li class="col-md-1"><%= pr.name %></li>
+          <li class="col-md-1"><strong>Precio</strong></li>
+          <li class="col-md-1"><%= pr.price %></li>
+          <li class="col-md-1"><strong>Laboratory</strong></li>
+          <li class="col-md-1"><%= pr.laboratory_id %></li>
+          <li class="col-md-1"><a href="<%= product_path(pr.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
+          <li class="col-md-1"> <a href="<%= edit_product_path(pr.id)%>" class="btn btn-success"> Edit</a> </li>
+          <li class="col-md-1"> <a href="<%= product_path(pr.id)%>" class="btn btn-info">View</a></li>
+        </ul>
+  </article>
+  <% end if @products.any?%>
+</div>

@@ -4,10 +4,10 @@ one:
   name: MyString
   price: 1.5
   icon: MyString
-  lab_name: MyString
+  laboratory_id: 1
 
 two:
   name: MyString
   price: 1.5
   icon: MyString
-  lab_name: MyString
+  laboratory_id: 1

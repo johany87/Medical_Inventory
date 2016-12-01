@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.string :name
       t.float :price
       t.string :icon
-      t.string :lab_name
+      t.integer :laboratory_id
 
       t.timestamps
     end
