@@ -5,7 +5,7 @@
       <strong>Name</strong>
       <p> <%= @product.name %> </p>
       <strong>Laboratory</strong>
-      <p><%= @product.laboratory_id %></p>
+      <p><%= @product.laboratory.name%></p>
       <a class="btn btn-danger" href="<%= product_path(@product.id) %>" data-method="delete"> Delete </a>
       <a class="btn btn-info" href="<%= edit_product_path(@product.id)%>"> Edit</a>
       <a class="btn btn-default" href="<%= products_path %>" > View all products </a>

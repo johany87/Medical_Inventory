@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to: "static_pages#index"
   devise_for :users, controllers:{
     sessions: 'users/sessions'}
@@ -6,6 +7,8 @@ Rails.application.routes.draw do
   resources :products
   resources :laboratories
   resources :stocks
-  resources :filters
+  scope :filters, controller: :filters do
+    get "/" =>  'filters#index', as: :filters
+  end
 
 end

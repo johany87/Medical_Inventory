@@ -1,13 +1,85 @@
-
-<div class="contanier">
-      <%= form_for @products_by_lab do |pl| %>
-        <div class="form-group">
-          <%= pl.label :laboratory %>
-          <select name="product[laboratory_id]" class="selectpicker">
-            <%= @laboratories.each do |l|  %>
-                <option value="<%= l.id %>"> <%= l.name %> </option>
-            <% end  %>
-          </select>
-      </div>
+<!--FILTER BY LAB-->
+<div class="container col-md-4">
+  <div class="container">
+    <h4>Filter by laboratory</h4>
+    <div class="row">
+      <%= form_tag filters_path, method: :get do %>
+      <select name="laboratory_id" class="selectpicker">
+        <%= @laboratories.each do |l| %>
+        <option value="<%= l.id %>"> <%= l.name %> </option>
+        <% end  %>
+      </select>
+      <button type="submit" class="btn">Search</button>
       <% end %>
+    </div>
+    <!--SHOW PRODUCTS BY LAB-->
+    <% @products_by_lab.each do |p| %>
+    <div class="row">
+      <div class="col-md-2">
+        <p><%= p.name %></p>
+      </div>
+      <div class="col-md-2">
+        <p><%= p.laboratory.name %></p>
+      </div>
+    </div>
+    <% end if @products_by_lab and @products_by_lab.any? %>
+  </div>
+</div>
+
+<!--FILTER BY USER-->
+<div class="container col-md-4">
+  <div class="container">
+    <h4>Filter by user</h4>
+    <div class="row">
+        <%= form_tag filters_path, method: :get do %>
+        <select name="user_id" class="selectpicker">
+          <%= @usuarios.each do |u| %>
+          <option value="<%= u.id %>"> <%= u.email %> </option>
+          <% end  %>
+        </select>
+        <button type="submit" class="btn">Search</button>
+        <% end %>
+    </div>
+    <!--SHOW PRODUCTS BY USER-->
+    <% @products_by_user.each do |p| %>
+    <div class="row">
+      <div class="col-md-2">
+        <p><%= p.product.name %></p>
+      </div>
+      <div class="col-md-2">
+        <p><%= p.user.email %></p>
+      </div>
+    </div>
+    <% end if @products_by_user and @products_by_user.any? %>
+  </div>
+</div>
+
+<!--SHOW PRODUCTS BY PRICE-->
+<div class="container col-md-4">
+  <div class="container">
+    <h4>Filter by price</h4>
+    <div class="row">
+        <%= form_tag filters_path, method: :get do %>
+        <select name="price" class="selectpicker">
+          <%= @products.each do |p| %>
+          <option value="<%= p.price %>"> <%= p.price %> </option>
+          <% end  %>
+        </select>
+        <button type="submit" class="btn">Search</button>
+        <% end %>
+    </div>
+    <!--SHOW PRODUCTS BY PRICE-->
+    <% @products_by_price.each do |p| %>
+    <div class="row">
+      <div class="col-md-1">
+        <p><%= p.name %></p>
+      </div>
+      <div class="col-md-1">
+        <p><%= p.price %></p>
+      </div>
+    </div>
+    <% end if @products_by_price%>
+  </div>
+</div>
+  </div>
 </div>

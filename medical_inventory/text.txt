@@ -1,4 +1,4 @@
-Products by lab = Product.where("laboratory_id = '1'")
+Products by lab = Product.where(laboratory_id = lab.id)
 Stocks by user = Stock.where("user_id = '1'")
 Overdues Stocks = Stock.where("due_date > ?", Date.today)
 All products = Product.all
