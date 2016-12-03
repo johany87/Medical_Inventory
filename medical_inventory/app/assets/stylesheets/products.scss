@@ -1,7 +1,21 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.product-img{
-  width: 10px;
-  height: 10px;
+
+thead tr th {
+    text-align: center;
+}
+
+tbody tr td {
+    vertical-align: middle !important;
+    text-align: center;
+}
+
+tbody tr td img {
+    max-height: 100px;
+    width: auto;
+}
+
+thead {
+  background: greenyellow;
 }
