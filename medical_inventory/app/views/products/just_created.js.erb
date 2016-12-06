@@ -1,0 +1,2 @@
+document.querySelector("body").innerHTML += "<%= j render 'shared/modal' , modal_title: 'Producto Creado! :D', modal_body: 'El objeto creado es: ' + @product_just_created.name %>"
+$("#my_modal").modal("show");

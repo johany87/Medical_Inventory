@@ -2,17 +2,30 @@
     <h1 class="text-center">Product Stock</h1>
 
     <article class="row stock">
-      <strong>Product</strong>
-      <p> <%= @stock.product.name %> </p>
-      <strong>Quantity</strong>
-      <p> <%= @stock.quantity %> </p>
-      <strong>User</strong>
-      <p> <%= @stock.user.email  %> </p>
-      <strong>Due Date</strong>
-      <p> <%= @stock.due_date  %> </p>
-      <a class="btn btn-danger" href="<%= stock_path(@stock.id) %>" data-method="delete"> Delete </a>
-      <a class="btn btn-info" href="<%= edit_stock_path(@stock.id)%>"> Edit</a>
-      <a class="btn btn-default" href="<%= stocks_path %>" > View all stocks </a>
+      <table class="table table-bordered table-responsive">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>User</th>
+            <th>Due Date</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-md-1 product-img"><img src="<%= @stock.product.avatar %>" width="120" alt="product"></td>
+            <td><%= @stock.product.name %></td>
+            <td><%= @stock.quantity %></td>
+            <td><%= @stock.user.email %></td>
+            <td><%= @stock.due_date  %></td>
+            <td><a class="btn btn-info" href="<%= edit_stock_path(@stock.id)%>"> Edit</a></td>
+            <td><a class="btn btn-danger" href="<%= stock_path(@stock.id) %>" data-method="delete"> Delete </a></td>
+          </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-default" href="<%= stocks_path %>" > View all stocks </a>
     </article>
-
 </div>

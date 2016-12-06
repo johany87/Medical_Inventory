@@ -1,18 +1,34 @@
 <div class="container">
   <h1 class="text-center"> Products </h1>
-  <% @products.each do |pr| %>
-    <article class="row product">
-        <ul class="list-unstyled">
-          <li class="col-md-1"><strong>Nombre</strong></li>
-          <li class="col-md-1"><%= pr.name %></li>
-          <li class="col-md-1"><strong>Precio</strong></li>
-          <li class="col-md-1"><%= pr.price %></li>
-          <li class="col-md-1"><strong>Laboratory</strong></li>
-          <li class="col-md-1"><%= pr.laboratory.name %></li>
-          <li class="col-md-1"><a href="<%= product_path(pr.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></li>
-          <li class="col-md-1"> <a href="<%= edit_product_path(pr.id)%>" class="btn btn-success"> Edit</a> </li>
-          <li class="col-md-1"> <a href="<%= product_path(pr.id)%>" class="btn btn-info">View</a></li>
-        </ul>
+    <% if session[:new_product] %>
+    <article data-new-product data-new-product-id="<%= session[:new_product] %>">
+    <% else %>
+    <article>
+    <% end %>
+        <table class="table table-bordered table-responsive">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Laboratory</th>
+              <th>Price</th>
+              <th>VIEW</th>
+              <th>EDIT</th>
+              <th>DELETE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @products.each do |pr| %>
+            <tr>
+              <td><%= pr.name %></td>
+              <td><%= pr.laboratory.name %></td>
+              <td><%= pr.price %></td>
+              <td><a href="<%= product_path(pr.id)%>" class="btn btn-info">View</a></td>
+              <td><a href="<%= edit_product_path(pr.id)%>" class="btn btn-success"> Edit</a></td>
+              <td><a href="<%= product_path(pr.id) %>" data-method="delete" class="btn btn-danger"> Delete </a></td>
+            </tr>
+            <% end if @products.any?%>
+          </tbody>
+        </table>
+        <a class="btn btn-default active" href="<%= new_product_path %>"> New Product </a>
   </article>
-  <% end if @products.any?%>
 </div>

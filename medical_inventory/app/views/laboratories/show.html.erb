@@ -1,13 +1,25 @@
-
 <div class="container">
     <h1 class="text-center">Laboratory Selected</h1>
 
     <article class="row laboratory">
-      <strong>Name</strong>
-      <p> <%= @laboratory.name %> </p>
-      <a class="btn btn-danger" href="<%= laboratory_path(@laboratory.id) %>" data-method="delete"> Delete </a>
-      <a class="btn btn-info" href="<%= edit_laboratory_path(@laboratory.id)%>"> Edit</a>
-      <a class="btn btn-default" href="<%= laboratories_path %>" > View all laboratories </a>
-    </article>
+
+    <table class="table table-bordered table-responsive">
+      <thead>
+        <tr>
+          <th>Laboratory</th>
+          <th>EDIT</th>
+          <th>DELETE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @laboratory.name %></td>
+          <td><a class="btn btn-info" href="<%= edit_laboratory_path(@laboratory.id)%>"> Edit</a></td>
+          <td><a class="btn btn-danger" href="<%= laboratory_path(@laboratory.id) %>" data-method="delete"> Delete </a></td>
+        </tr>
+      </tbody>
+  </table>
+  <a class="btn btn-default" href="<%= laboratories_path %>" > View all laboratories </a>
+</article>
 
 </div>

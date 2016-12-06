@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers:{
     sessions: 'users/sessions'}
 
-  resources :products
+  resources :products do
+    member do
+      get :just_created
+    end
+  end
   resources :laboratories
   resources :stocks
   scope :filters, controller: :filters do

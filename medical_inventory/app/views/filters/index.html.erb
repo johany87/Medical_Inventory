@@ -31,14 +31,14 @@
   <div class="container">
     <h4>Filter by user</h4>
     <div class="row">
-        <%= form_tag filters_path, method: :get do %>
-        <select name="user_id" class="selectpicker">
-          <%= @usuarios.each do |u| %>
-          <option value="<%= u.id %>"> <%= u.email %> </option>
-          <% end  %>
-        </select>
-        <button type="submit" class="btn">Search</button>
-        <% end %>
+      <%= form_tag filters_path, method: :get do %>
+      <select name="user_id" class="selectpicker">
+        <%= @usuarios.each do |u| %>
+        <option value="<%= u.id %>"> <%= u.email %> </option>
+        <% end  %>
+      </select>
+      <button type="submit" class="btn">Search</button>
+      <% end %>
     </div>
     <!--SHOW PRODUCTS BY USER-->
     <% @products_by_user.each do |p| %>
@@ -59,14 +59,14 @@
   <div class="container">
     <h4>Filter by price</h4>
     <div class="row">
-        <%= form_tag filters_path, method: :get do %>
-        <select name="price" class="selectpicker">
-          <%= @products.each do |p| %>
-          <option value="<%= p.price %>"> <%= p.price %> </option>
-          <% end  %>
-        </select>
-        <button type="submit" class="btn">Search</button>
-        <% end %>
+      <%= form_tag filters_path, method: :get do %>
+      <select name="price" class="selectpicker">
+        <%= @products.each do |p| %>
+        <option value="<%= p.price %>"> <%= p.price %> </option>
+        <% end  %>
+      </select>
+      <button type="submit" class="btn">Search</button>
+      <% end %>
     </div>
     <!--SHOW PRODUCTS BY PRICE-->
     <% @products_by_price.each do |p| %>
@@ -79,7 +79,5 @@
       </div>
     </div>
     <% end if @products_by_price%>
-  </div>
-</div>
   </div>
 </div>

@@ -12,12 +12,19 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
+      session[:new_product] = @product.id
       flash[:success] = "Product created Ok"
       redirect_to products_path
     else
       render 'new'
     end #if
   end #create
+
+  # Ajax Call
+  def just_created
+    @product_just_created = Product.find_by(id: params[:id])
+    session.delete(:new_product)
+  end
 
   def destroy
     find_product
