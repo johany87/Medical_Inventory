@@ -17,33 +17,38 @@
 
 <div class="container">
   <%= form_for @stock do |s| %>
-    <!--Product-->
-    <div class="form-group">
-      <%= s.label :producto %>
-      <select name="stock[product_id]" class="selectpicker">
-        <%= @products.each do |pr|  %>
-            <option value="<%= pr.id %>"> <%= pr.name %> </option>
-        <% end  %>
-      </select>
-    </div>
-    <!--Quantity-->
-    <div class="form-group">
-      <%= s.label :quantity %>
-      <%= s.number_field :quantity, class: "form-control" %>
-    </div>
-    <!--User-->
-    <div class="form-group">
-      <%= s.label :user %>
-      <select name="stock[user_id]" class="selectpicker">
-        <%= @users.each do |u|  %>
-            <option value="<%= u.id %>"> <%= u.email %> </option>
-        <% end  %>
-      </select>
-    </div>
+
+  <!--User-->
+  <div class="form-group">
+    <%= s.label :user %><br>
+    <select name="stock[user_id]" class="selectpicker">
+      <%= @users.each do |u|  %>
+          <option value="<%= u.id %>"> <%= u.email %> </option>
+      <% end  %>
+    </select>
+  </div>
+
+    <div class="row">
+      <!--Quantity-->
+      <div class="col-sm-4 form-group">
+        <%= s.label :quantity %>
+        <%= s.number_field :quantity, class: "form-control" %>
+      </div>
+      <!--Product-->
+      <div class="col-sm-4 form-group">
+        <%= s.label :producto %><br>
+        <select name="stock[product_id]" class="selectpicker">
+          <%= @products.each do |pr|  %>
+              <option value="<%= pr.id %>"> <%= pr.name %> </option>
+          <% end  %>
+        </select>
+      </div>
+
     <!--Due Date-->
-    <div class="form-group">
+    <div class="col-sm-4 form-group">
       <%= s.label :due_date %>
       <%= s.date_field :due_date, class: "form-control" %>
+    </div>
     </div>
     <%= s.submit "#{form_name} stock", class:"btn btn-primary" %>
 
