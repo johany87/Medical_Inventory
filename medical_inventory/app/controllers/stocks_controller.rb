@@ -1,7 +1,7 @@
 class StocksController < ApplicationController
 
   def index
-    @stocks = Stock.all
+    @stocks = Stock.where("user_id = ?", current_user.id)
   end #index
 
   def new

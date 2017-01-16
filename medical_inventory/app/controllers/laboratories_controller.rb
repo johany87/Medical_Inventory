@@ -20,12 +20,12 @@ class LaboratoriesController < ApplicationController
 
   def destroy
     find_laboratory
-  if @laboratory.destroy
-      flash[:success] = "Laboratory Destroyed Successfully"
-  else
-      flash[:error] = "Houston we are in troubles, please try later"
-  end
-    redirect_to laboratories_path
+    if @laboratory.destroy
+        flash[:success] = "Laboratory Destroyed Successfully"
+    else
+        flash[:error] = "Houston we are in troubles, please try later"
+    end if @laboratory.products.any? 
+      redirect_to laboratories_path
   end #destroy
 
   def edit
